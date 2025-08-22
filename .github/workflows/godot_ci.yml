@@ -41,8 +41,8 @@ jobs:
 
       - name: Download Godot Headless
         run: |
-          wget https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux_x86_64.zip
-          unzip Godot_v4.4.1-stable_linux_x86_64.zip -d godot_folder
+          wget https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          unzip Godot_v4.4.1-stable_linux.x86_64.zip -d godot_folder
           chmod +x godot_folder/Godot_v4.4.1-stable_linux_x86_64/Godot_v4.4.1-stable_linux.x86_64
           sudo mv godot_folder/Godot_v4.4.1-stable_linux_x86_64/Godot_v4.4.1-stable_linux.x86_64 /usr/local/bin/godot
 
