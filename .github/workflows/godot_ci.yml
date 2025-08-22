@@ -21,12 +21,12 @@ jobs:
           pip3 install "gdtoolkit==4.*"
 
       - name: Lint scripts
-        working-directory: ./ashes-to-ash--a-poacher's-tale
-        run: gdlint ./scripts/
+        working-directory: ./ashes-to-ash--a-poacher's-tale/scripts
+        run: gdlint .
 
       - name: Lint tests
-        working-directory: ./ashes-to-ash--a-poacher's-tale
-        run: gdlint ./tests/
+        working-directory: ./ashes-to-ash--a-poacher's-tale/tests
+        run: gdlint .
   
   test:
     name: Run Tests
