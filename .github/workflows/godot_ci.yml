@@ -41,10 +41,11 @@ jobs:
 
       - name: Download Godot Headless
         run: |
-          wget https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_x86_64.zip
-          unzip Godot_v4.4.1-stable_mono_linux_x86_64.zip -d godot_folder
-          chmod +x godot_folder/Godot_v4.4.1-stable_mono_linux_x86_64/Godot_v4.4.1-stable_mono_linux.x86_64
-          sudo mv godot_folder/Godot_v4.4.1-stable_mono_linux_x86_64/Godot_v4.4.1-stable_mono_linux.x86_64 /usr/local/bin/godot-mono
+          wget https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          unzip Godot_v4.4.1-stable_linux.x86_64.zip -d godot_folder
+          chmod +x godot_folder/Godot_v4.4.1-stable_linux.x86_64/Godot_v4.4.1-stable_linux.x86_64
+          sudo mv godot_folder/Godot_v4.4.1-stable_linux.x86_64/Godot_v4.4.1-stable_linux.x86_64 /usr/local/bin/godot
+
       - name: Install GUT 
         run: |
           cd "ashes-to-ash--a-poacher's-tale/addons"
@@ -55,5 +56,5 @@ jobs:
       - name: Run GUT tests
         run: |
           cd "ashes-to-ash--a-poacher's-tale"
-          godot-mono --headless -d -s --path . addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit        
+          godot --headless -d -s --path . addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit        
 
