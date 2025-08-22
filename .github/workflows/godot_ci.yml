@@ -21,14 +21,17 @@ jobs:
           pip3 install "gdtoolkit==4.*"
 
       - name: Lint scripts
-        run: gdlint ./godot-project/scripts/
+        working-directory: ./ashes-to-ash--a-poacher's-tale
+        run: gdlint ./scripts/
 
       - name: Lint tests
-        run: gdlint ./godot-project/tests/
+        working-directory: ./ashes-to-ash--a-poacher's-tale
+        run: gdlint ./tests/
   
   test:
     name: Run Tests
     runs-on: ubuntu-latest
+    needs: lint
 
     steps:
       - name: Checkout repository
