@@ -21,12 +21,14 @@ jobs:
           pip3 install "gdtoolkit==4.*"
 
       - name: Lint scripts
-        working-directory: ./ashes-to-ash--a-poacher's-tale/scripts
-        run: gdlint .
+        run: |
+          cd "ashes-to-ash--a-poacher's-tale/scripts"
+          gdlint . 
 
       - name: Lint tests
-        working-directory: ./ashes-to-ash--a-poacher's-tale/tests
-        run: gdlint .
+        run: |
+          cd "ashes-to-ash--a-poacher's-tale/tests"
+          gdlint .
   
   test:
     name: Run Tests
@@ -45,13 +47,15 @@ jobs:
           chmod +x /usr/local/bin/godot-mono
 
       - name: Install GUT 
-        working-directory: ./ashes-to-ash--a-poacher's-tale/addons
         run: |
+          cd "ashes-to-ash--a-poacher's-tale/addons"
           wget https://github.com/bitwes/Gut/archive/ca6cf2006b887c5072410a3c89792110ba51d476.zip
           unzip ca6cf2006b887c5072410a3c89792110ba51d476.zip -d gut
           rm -rf ca6cf2006b887c5072410a3c89792110ba51d476.zip
 
       - name: Run GUT tests
         working-directory: ./ashes-to-ash--a-poacher's-tale
-        run: godot-mono --headless -d -s --path ./ashes-to-ash--a-poacher\'s-tale/ addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit        
+        run: |
+          cd "ashes-to-ash--a-poacher's-tale"
+          godot-mono --headless -d -s --path . addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit        
 
