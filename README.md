@@ -17,7 +17,7 @@ git clone https://github.com/GitterRitter/Ashes-To-Ash.git
 
 'Windows'
 ```bash
-godot --path Ashes-To-Ash/ashes-to-ash--a-poacher's-tale --export-release "Windows" ashes-to-ashes.exe
+godot --path Ashes-To-Ash/ashes-to-ash--a-poacher's-tale --export-release "Windows Desktop" ashes-to-ashes.exe
 ```
 
 'MacOS'
