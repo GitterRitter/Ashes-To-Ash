@@ -41,6 +41,7 @@ jobs:
 
       - name: Download Godot Headless
         run: |
+          ls -a
           wget https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_x86_64.zip
           unzip Godot_v4.4.1-stable_mono_linux_x86_64.zip -d godot
           mv godot/Godot_v4.1.1-stable_mono_linux_x86_64 /usr/local/bin/godot-mono
@@ -48,13 +49,13 @@ jobs:
 
       - name: Install GUT 
         run: |
+          ls -a
           cd "ashes-to-ash--a-poacher's-tale/addons"
           wget https://github.com/bitwes/Gut/archive/ca6cf2006b887c5072410a3c89792110ba51d476.zip
           unzip ca6cf2006b887c5072410a3c89792110ba51d476.zip -d gut
           rm -rf ca6cf2006b887c5072410a3c89792110ba51d476.zip
 
       - name: Run GUT tests
-        working-directory: ./ashes-to-ash--a-poacher's-tale
         run: |
           cd "ashes-to-ash--a-poacher's-tale"
           godot-mono --headless -d -s --path . addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit        
