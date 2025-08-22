@@ -8,7 +8,7 @@ on:
 jobs:
   lint:
     name: Lint GDScript
-    runs on: ubuntu-latest
+    runs-on: ubuntu-latest
     
     steps:
       - name: Checkout repository
@@ -28,7 +28,7 @@ jobs:
   
   test:
     name: Run Tests
-    runs on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
