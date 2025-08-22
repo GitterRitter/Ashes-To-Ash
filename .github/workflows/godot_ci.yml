@@ -1,0 +1,47 @@
+name: Godot CI/CD Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+    
+jobs:
+  lint:
+    name: Lint GDScript
+    runs on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install GDToolKit`
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip3 install "gdtoolkit==4.*"
+
+      - name: Lint scripts
+        run: gdlint ./godot-project/scripts/
+
+      - name: Lint tests
+        run: gdlint ./godot-project/tests/
+  
+  test:
+    name: Run Tests
+    runs on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Godot Headless
+        run: |
+          wget https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_x86_64.zip
+          unzip Godot_v4.4.1-stable_mono_linux_x86_64.zip -d godot
+          mv godot/Godot_v4.2.2-stable_linux.x86_64 /usr/local/bin/godot-mono
+          chmod +x /usr/local/bin/godot-mono
+
+      - name: Run GUT tests
+        working-directory: ./ashes-to-ash--a-poacher's-tale
+        run: godot-mono --headless -d -s --path ./ashes-to-ash--a-poacher\'s-tale/ addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit        
+
