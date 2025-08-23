@@ -46,6 +46,11 @@ jobs:
           chmod +x godot_folder/Godot_v4.4.1-stable_linux.x86_64
           sudo mv godot_folder/Godot_v4.4.1-stable_linux.x86_64 /usr/local/bin/godot
 
+      - name: Import project resources
+        run: |
+          cd "ashes-to-ash--a-poacher's-tale"
+          godot --headless --path . --import
+
       - name: Install GUT 
         run: |
           cd "ashes-to-ash--a-poacher's-tale/addons"
