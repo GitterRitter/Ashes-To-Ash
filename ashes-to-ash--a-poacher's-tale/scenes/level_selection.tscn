@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cspr4ehrdml33"]
+[gd_scene format=3 uid="uid://c23vn5ifp4oph"]
 
-[node name="LoadGame" type="Control"]
+[node name="LevelSelection" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
