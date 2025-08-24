@@ -20,7 +20,7 @@ func on_new_game_button_pressed():
 	SceneLoader.change_scene("res://scenes/new_game.tscn")
 
 func on_settings_button_pressed():
-	SceneLoader.change_scene("res://scenes/settings.tscn")
+	SceneLoader.change_scene("res://scenes/settings/settings.tscn")
 
 func on_credits_button_pressed():
 	SceneLoader.change_scene("res://scenes/credits.tscn")
