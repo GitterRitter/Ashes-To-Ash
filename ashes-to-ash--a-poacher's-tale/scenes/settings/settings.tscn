@@ -18,6 +18,7 @@ video_button = NodePath("Panel/HBoxContainer/VideoButton")
 controls_button = NodePath("Panel/HBoxContainer/ControlsButton")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rnmoi")
