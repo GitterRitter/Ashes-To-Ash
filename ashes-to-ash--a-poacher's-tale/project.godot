@@ -32,7 +32,7 @@ project/assembly_name="Ashes To Ash- A Poacher-s Tale"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+enabled=PackedStringArray()
 
 [rendering]
 

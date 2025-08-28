@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bal7j02nwnm4i"]
+[gd_scene load_steps=4 format=3 uid="uid://bal7j02nwnm4i"]
 
 [ext_resource type="Script" uid="uid://bb2njj3hcbn1n" path="res://scripts/settings.gd" id="1_26ncd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnmoi"]
 bg_color = Color(0.17881, 0.17881, 0.17881, 1)
 
-[node name="Settings" type="Control" node_paths=PackedStringArray("audio_button", "video_button", "controls_button")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26ncd"]
+bg_color = Color(0.17881, 0.17881, 0.17881, 1)
+
+[node name="Settings" type="Control" node_paths=PackedStringArray("master_slide", "sfx_slide", "music_slide", "screen_mode_menu", "resolution_menu", "vertical_sync_button", "max_fps_line_edit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,9 +16,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_26ncd")
-audio_button = NodePath("Panel/HBoxContainer/AudioButton")
-video_button = NodePath("Panel/HBoxContainer/VideoButton")
-controls_button = NodePath("Panel/HBoxContainer/ControlsButton")
+master_slide = NodePath("Panel/ScrollContainer/Panel/VBoxInputs/MasterSlide")
+sfx_slide = NodePath("Panel/ScrollContainer/Panel/VBoxInputs/SFXSlide")
+music_slide = NodePath("Panel/ScrollContainer/Panel/VBoxInputs/MusicSlide")
+screen_mode_menu = NodePath("Panel/ScrollContainer/Panel/VBoxInputs/ScreenModeMenu")
+resolution_menu = NodePath("Panel/ScrollContainer/Panel/VBoxInputs/ResolutionMenu")
+vertical_sync_button = NodePath("Panel/ScrollContainer/Panel/VBoxInputs/VsyncButton")
+max_fps_line_edit = NodePath("Panel/ScrollContainer/Panel/VBoxInputs/MaxFpsLineEdit")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -23,33 +30,151 @@ offset_right = 640.0
 offset_bottom = 360.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rnmoi")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+custom_minimum_size = Vector2(600, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -154.0
-offset_top = -20.0
-offset_right = 154.0
-offset_bottom = 20.0
+offset_left = -300.0
+offset_top = -130.0
+offset_right = 300.0
+offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 30
 
-[node name="AudioButton" type="Button" parent="Panel/HBoxContainer"]
-custom_minimum_size = Vector2(100, 30)
+[node name="Panel" type="Panel" parent="Panel/ScrollContainer"]
+custom_minimum_size = Vector2(600, 800)
 layout_mode = 2
-text = "Audio
-"
+theme_override_styles/panel = SubResource("StyleBoxFlat_26ncd")
 
-[node name="VideoButton" type="Button" parent="Panel/HBoxContainer"]
-custom_minimum_size = Vector2(100, 30)
+[node name="VBoxLabels" type="VBoxContainer" parent="Panel/ScrollContainer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -400.0
+offset_right = 165.0
+offset_bottom = 210.0
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="AudioLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(10, 25)
+layout_mode = 2
+text = "Audio"
+
+[node name="MasterLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(10, 25)
+layout_mode = 2
+text = "Master"
+
+[node name="SXFLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(10, 25)
+layout_mode = 2
+text = "SFX"
+
+[node name="MusicLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(10, 25)
+layout_mode = 2
+text = "Music"
+
+[node name="VideoLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(10, 25)
 layout_mode = 2
 text = "Video"
 
-[node name="ControlsButton" type="Button" parent="Panel/HBoxContainer"]
-custom_minimum_size = Vector2(100, 30)
+[node name="ScreenModeLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(150, 31)
+layout_mode = 2
+text = "Screen Mode"
+
+[node name="ResolutionLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(150, 31)
+layout_mode = 2
+text = "Resolution"
+
+[node name="VsyncLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(150, 31)
+layout_mode = 2
+text = "Vertical Sync"
+
+[node name="MaxFpsLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+text = "Max FPS"
+
+[node name="ControlsLabel" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxLabels"]
+custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
 text = "Controls"
+
+[node name="VBoxInputs" type="VBoxContainer" parent="Panel/ScrollContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -400.0
+offset_right = 200.0
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Space1" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+custom_minimum_size = Vector2(10, 25)
+layout_mode = 2
+
+[node name="MasterSlide" type="HSlider" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+max_value = 100.01
+
+[node name="SFXSlide" type="HSlider" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+
+[node name="MusicSlide" type="HSlider" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+custom_minimum_size = Vector2(350, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Space2" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+custom_minimum_size = Vector2(10, 25)
+layout_mode = 2
+
+[node name="ScreenModeMenu" type="OptionButton" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "Full Screen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+
+[node name="ResolutionMenu" type="OptionButton" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "640x360"
+popup/item_0/id = 2
+popup/item_1/text = "1280x720"
+popup/item_1/id = 3
+popup/item_2/text = "1920x1080"
+popup/item_2/id = 0
+popup/item_3/text = "2560x1440"
+popup/item_3/id = 1
+
+[node name="VsyncButton" type="CheckButton" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+layout_mode = 2
+
+[node name="MaxFpsLineEdit" type="LineEdit" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+layout_mode = 2
+
+[node name="Space3" type="RichTextLabel" parent="Panel/ScrollContainer/Panel/VBoxInputs"]
+custom_minimum_size = Vector2(10, 25)
+layout_mode = 2
